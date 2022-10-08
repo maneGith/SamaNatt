@@ -1,18 +1,31 @@
 import React from 'react';
 import {StyleSheet, TouchableOpacity, Image } from 'react-native';
-import Img  from '../../assets/images/step-fw.png';
+import Img  from '../../assets/images/backsp.png';
 
-const CustomButtonDelete = ({ setDesabledValue, text, nameIcon, ftColor, ftSize, onPressedButtonValue, setOnPressedButtonValue }) => {
+const CustomButtonDelete = ({ setDesabledValue, onPressedButtonValue, setOnPressedButtonValue }) => {
     return (  
         <TouchableOpacity 
-            style={styles.container}>
+            style={styles.container}
+            onPress={()=>{
+
+                let returnValue='';
+                let subOnPressed=onPressedButtonValue.substring(onPressedButtonValue.length-1, onPressedButtonValue.length)
+                if(subOnPressed!=' '){
+                    returnValue=onPressedButtonValue.substring(0, onPressedButtonValue.length-1)
+                }else{
+                    returnValue=onPressedButtonValue.substring(0, onPressedButtonValue.length-2)
+                }
+                setOnPressedButtonValue(returnValue)
+                setDesabledValue(true);
+
+            }}
+        >
            
            <Image 
-                        source={Img}  
-                        style={styles.iconImg}
-                        resizeMode="contain"
-                    />
-                    
+                source={Img}  
+                style={styles.iconImg}
+                resizeMode="contain"
+            />          
         </TouchableOpacity>
     );
 };

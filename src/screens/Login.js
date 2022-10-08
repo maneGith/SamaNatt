@@ -4,21 +4,23 @@ import {
     Text,
     StyleSheet,
     Image,
-    useWindowDimensions
+    useWindowDimensions,
+    TouchableOpacity,
+    Platform
     } from 'react-native';
 import Logo from '../../assets/images/koppar.jpeg'
 import CustomTextInput from '../components/CustomTextInput';
 import Flag from '../../assets/images/drapeau-senegal.png'
 import ClavierNumerique from '../components/ClavierNumerique';
 
-const Login =  () => {
+const Login =  ({ navigation, isConnected, setIsConnected }) => {
 
     const [onPressedButtonValue, setOnPressedButtonValue] = useState('');
     
     const {height} = useWindowDimensions();
 
     return ( 
-        <View style={styles.root}>
+        <View style={[styles.root, {paddingTop:Platform.OS === 'ios'?50:20}]}>
             <Image
                 source={Logo}  
                 style={[
@@ -32,8 +34,8 @@ const Login =  () => {
             </View>
 
             <View style={{ alignItems: 'center',paddingTop:10}}>
-                <Text style={{fontSize:22,  color:'#000'}}>Pour commencer, tapez le</Text>
-                <Text style={{fontSize:22,  color:'#000'}}>numéro de votre téléphone mobile :</Text>
+                <Text style={{fontSize:22,  color:'#000'}}>Pour commencer, entrez le</Text>
+                <Text style={{fontSize:22,  color:'#000'}}>numéro de votre téléphone mobile</Text>
             </View>
 
             <View style={styles.containerInputPhoneSection}>
@@ -47,7 +49,7 @@ const Login =  () => {
                 </View>
 
                 <View style={styles.indicatorSection}>
-                    <Text  style={{fontSize:20, color:'#000'}}>
+                    <Text  style={{fontSize:25, color:'#000'}}>
                         +221
                     </Text>
                 </View> 
@@ -57,21 +59,32 @@ const Login =  () => {
                         placeholder="7X XXX XX XX" 
                         fontColor={'#000'}
                         value={onPressedButtonValue} 
-                        setValue={setOnPressedButtonValue}
-                    
+                        onChangeText={setOnPressedButtonValue}
+                        editable={false}
                         showSoftInputOnFocus={false} 
                         autoFocus 
-                        fontSizeValue={20}
+                        fontSizeValue={25}
                     />
                 </View>
             </View> 
 
             <ClavierNumerique 
-                    onPressedButtonValue={onPressedButtonValue}
-                    ftSize={30}
-                    fgColor={'#000'}
-                    setOnPressedButtonValue={setOnPressedButtonValue}
-                />   
+                ftSize={30}
+                fgColor={'#000'}
+                onPressedButtonValue={onPressedButtonValue}
+                setOnPressedButtonValue={setOnPressedButtonValue}
+                setIsConnected={setIsConnected}
+            /> 
+
+            
+            <TouchableOpacity 
+                style={[styles.infoButton]}
+                onPress={() => {
+                    navigation.navigate('Information');
+                }}
+                >
+                <Text style={styles.textinfoButton}>Pour en savoir plus, cliquez ici.</Text>
+          </TouchableOpacity> 
 
         </View>
      );
@@ -84,7 +97,7 @@ const styles = StyleSheet.create({
     },
     containerInputPhoneSection: {
         flexDirection: 'row',
-        borderBottomWidth: 1,
+        //borderBottomWidth: 1,
         borderColor: '#66CDAA',
         paddingHorizontal: 10,
         width:'80%',
@@ -108,13 +121,28 @@ const styles = StyleSheet.create({
     indicatorSection:{
         alignItems:'center',
         justifyContent:'center',
-        marginLeft:10
+        marginLeft:5
         },
     phoneSection:{
         alignItems:'center',
-         justifyContent:'center',
-          flex: 1, 
-          marginLeft: 10
+        justifyContent:'center',
+        flex: 1, 
+        marginLeft: 5
+    },
+    infoButton: {
+        width: '100%',
+        padding: 11,
+        alignItems: 'center',
+        justifyContent:'center',
+        borderRadius: 5,
+        position:'absolute',
+        backgroundColor:'#66CDAA',
+        bottom:0
+    },
+    textinfoButton: {
+        fontWeight: 'bold',
+        color: '#fff',
+        fontSize:18
     }
 })
 

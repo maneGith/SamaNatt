@@ -2,13 +2,14 @@ import React, {useState} from 'react';
 import { View } from 'react-native';
 import CustomButton from './CustomButton';
 import CustomButtonDelete from './CustomButtonDelete';
+import CustomButtonStepForward from './CustomButtonStepForward';
 
-const ClavierNumerique = ({ onPressedButtonValue, setOnPressedButtonValue, ftSize, fgColor }) => {
+const ClavierNumerique = ({ onPressedButtonValue, setOnPressedButtonValue, ftSize, fgColor, setIsConnected}) => {
   
     const [desabledValue, setDesabledValue] = useState(true);
 
     return (
-            <View style={{ marginTop:25, width:'80%'}}>
+            <View style={{ marginTop:15, width:'80%'}}>
                 <View style={{flexDirection: 'row'}}>
                     <View style={{width: '33%', alignItems: 'center'}}>
                         <CustomButton 
@@ -17,6 +18,7 @@ const ClavierNumerique = ({ onPressedButtonValue, setOnPressedButtonValue, ftSiz
                             fgColor={fgColor}
                             onPressedButtonValue={onPressedButtonValue}
                             setOnPressedButtonValue={setOnPressedButtonValue}
+                            desabledValue={desabledValue}
                             setDesabledValue={setDesabledValue}
                         />
                     </View>
@@ -26,6 +28,7 @@ const ClavierNumerique = ({ onPressedButtonValue, setOnPressedButtonValue, ftSiz
                             fgColor={fgColor}
                             onPressedButtonValue={onPressedButtonValue}
                             setOnPressedButtonValue={setOnPressedButtonValue}
+                            desabledValue={desabledValue}
                             setDesabledValue={setDesabledValue}
                         />
                     </View>
@@ -35,6 +38,7 @@ const ClavierNumerique = ({ onPressedButtonValue, setOnPressedButtonValue, ftSiz
                             fgColor={fgColor}
                             onPressedButtonValue={onPressedButtonValue}
                             setOnPressedButtonValue={setOnPressedButtonValue}
+                            desabledValue={desabledValue}
                             setDesabledValue={setDesabledValue}
                         />
                     </View>
@@ -49,6 +53,7 @@ const ClavierNumerique = ({ onPressedButtonValue, setOnPressedButtonValue, ftSiz
                             fgColor={fgColor}
                             onPressedButtonValue={onPressedButtonValue}
                             setOnPressedButtonValue={setOnPressedButtonValue}
+                            desabledValue={desabledValue}
                             setDesabledValue={setDesabledValue}
                         />
                     </View>
@@ -59,6 +64,7 @@ const ClavierNumerique = ({ onPressedButtonValue, setOnPressedButtonValue, ftSiz
                             fgColor={fgColor}
                             onPressedButtonValue={onPressedButtonValue}
                             setOnPressedButtonValue={setOnPressedButtonValue}
+                            desabledValue={desabledValue}
                             setDesabledValue={setDesabledValue}
                         />
                     </View>
@@ -69,6 +75,7 @@ const ClavierNumerique = ({ onPressedButtonValue, setOnPressedButtonValue, ftSiz
                             fgColor={fgColor}
                             onPressedButtonValue={onPressedButtonValue}
                             setOnPressedButtonValue={setOnPressedButtonValue}
+                            desabledValue={desabledValue}
                             setDesabledValue={setDesabledValue}
                         />
                     </View>
@@ -83,6 +90,7 @@ const ClavierNumerique = ({ onPressedButtonValue, setOnPressedButtonValue, ftSiz
                             fgColor={fgColor}
                             onPressedButtonValue={onPressedButtonValue}
                             setOnPressedButtonValue={setOnPressedButtonValue}
+                            desabledValue={desabledValue}
                             setDesabledValue={setDesabledValue}
                         />
                     </View>
@@ -93,6 +101,7 @@ const ClavierNumerique = ({ onPressedButtonValue, setOnPressedButtonValue, ftSiz
                             fgColor={fgColor}
                             onPressedButtonValue={onPressedButtonValue}
                             setOnPressedButtonValue={setOnPressedButtonValue}
+                            desabledValue={desabledValue}
                             setDesabledValue={setDesabledValue}
                         />
                     </View>
@@ -103,6 +112,7 @@ const ClavierNumerique = ({ onPressedButtonValue, setOnPressedButtonValue, ftSiz
                             fgColor={fgColor}
                             onPressedButtonValue={onPressedButtonValue}
                             setOnPressedButtonValue={setOnPressedButtonValue}
+                            desabledValue={desabledValue}
                             setDesabledValue={setDesabledValue}
                         />
                     </View>
@@ -111,10 +121,6 @@ const ClavierNumerique = ({ onPressedButtonValue, setOnPressedButtonValue, ftSiz
                 <View style={{flexDirection: 'row'}}>
                     <View style={{width: '33%', alignItems: 'center'}}>
                         <CustomButtonDelete 
-                            text='delete'
-                            nameIcon='delete'
-                            ftColor={fgColor}
-                            ftSize={ftSize}
                             onPressedButtonValue={onPressedButtonValue}
                             setOnPressedButtonValue={setOnPressedButtonValue} 
                             setDesabledValue={setDesabledValue}     
@@ -127,19 +133,14 @@ const ClavierNumerique = ({ onPressedButtonValue, setOnPressedButtonValue, ftSiz
                             ftSize={ftSize}
                             onPressedButtonValue={onPressedButtonValue}
                             setOnPressedButtonValue={setOnPressedButtonValue}  
+                            desabledValue={desabledValue}
                             setDesabledValue={setDesabledValue}    
                         /> 
                     </View>
                     <View style={{width: '33%', alignItems: 'center'}}>
-                        <CustomButton
-                            text='Suiv.' 
-                            setDesabledValue={setDesabledValue}
-                            nameIcon='stepforward'
-                            ftColor='#66CDAA'
-                            ftSize={ftSize}
-                            onPressedButtonValue={onPressedButtonValue}
-                            setOnPressedButtonValue={setOnPressedButtonValue} 
-                            desabledValue={desabledValue}       
+                        <CustomButtonStepForward 
+                            desabledValue={desabledValue}   
+                            setIsConnected={setIsConnected}  
                         />
                     </View>
                 </View>

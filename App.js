@@ -6,42 +6,98 @@
  * @flow strict-local
  */
 
- import React from 'react';
- import {
-   SafeAreaView,
-   StyleSheet
- } from 'react-native';
- 
+ import React , { useState } from 'react';
  import Login from './src/screens/Login';
+ import Information from './src/screens/Information';
+
+ import ListNatt from './src/screens/ListNatt';
+ import Invitation from './src/screens/Invitation';
+
+ import { NavigationContainer } from '@react-navigation/native';
+ import { createNativeStackNavigator } from '@react-navigation/native-stack';
  
- 
+ const Stack = createNativeStackNavigator();
  
  const App = () => {
-   return (
-     <SafeAreaView>
-       <Login />
-     </SafeAreaView>
+
+  const [isConnected, setIsConnected] = useState(false);
+
+   return ( 
+    
+    <NavigationContainer> 
+      {isConnected?(
+        
+          <Stack.Navigator>
+
+              <Stack.Screen
+              name="ListNatt"
+              component={ListNatt}
+              options={{ 
+                title: 'SamaNatt',
+                headerStyle: {
+                  backgroundColor: '#66CDAA',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                  fontSize:25
+                },
+                headerBackTitle:' '
+              }} 
+              />
+
+              <Stack.Screen
+              name="Invitation"
+              component={Invitation}
+              options={{ 
+                title: 'SamaNatt',
+                headerStyle: {
+                  backgroundColor: '#66CDAA',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                  fontSize:25
+                },
+                headerBackTitle:' '
+              }} 
+              />
+
+          </Stack.Navigator>
+
+        ):(
+          <Stack.Navigator>
+
+            <Stack.Screen
+              name="Login"
+              options={{headerShown: false}}>
+                {(props) => <Login {...props} isConnected={isConnected} setIsConnected={setIsConnected} />}
+            </Stack.Screen>
+            <Stack.Screen 
+              name="Information" 
+              component={Information}
+              options={{ 
+                title: 'Prenez connaissance',
+                headerStyle: {
+                  backgroundColor: '#66CDAA',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                  fontSize:25
+                },
+                headerBackTitle:' '
+              }} 
+            />
+
+        </Stack.Navigator>
+          )
+      }
+    </NavigationContainer>
    );
  };
  
- const styles = StyleSheet.create({
-   sectionContainer: {
-     marginTop: 32,
-     paddingHorizontal: 24,
-   },
-   sectionTitle: {
-     fontSize: 24,
-     fontWeight: '600',
-   },
-   sectionDescription: {
-     marginTop: 8,
-     fontSize: 18,
-     fontWeight: '400',
-   },
-   highlight: {
-     fontWeight: '700',
-   },
- });
+ 
  
  export default App;
  
