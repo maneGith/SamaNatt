@@ -10,6 +10,7 @@
  import Login from './src/screens/Login';
  import Information from './src/screens/Information';
 
+ import Participation from './src/screens/Participation';
  import ListNatt from './src/screens/ListNatt';
  import Invitation from './src/screens/Invitation';
 
@@ -27,40 +28,66 @@
     <NavigationContainer> 
       {isConnected?(
         
-          <Stack.Navigator>
+          <Stack.Navigator
+          initialRouteName='Participation'
+          >
 
               <Stack.Screen
-              name="ListNatt"
-              component={ListNatt}
-              options={{ 
-                title: 'SamaNatt',
-                headerStyle: {
-                  backgroundColor: '#66CDAA',
-                },
-                headerTintColor: '#fff',
-                headerTitleStyle: {
-                  fontWeight: 'bold',
-                  fontSize:25
-                },
-                headerBackTitle:' '
-              }} 
+                name="Participation"
+                component={Participation}
+                options={{ 
+                  title: 'SamaNatt',
+                  headerBackVisible:false,
+                  headerTitleAlign: 'center',
+                  headerStyle: {
+                    backgroundColor: '#66CDAA',
+                  },
+                  headerTintColor: '#fff',
+                  headerTitleStyle: {
+                    fontWeight: 'bold',
+                    fontSize:25,
+                  },
+                  headerBackTitle:' ',
+                  headerShadowVisible: false
+                }} 
               />
 
               <Stack.Screen
-              name="Invitation"
-              component={Invitation}
-              options={{ 
-                title: 'SamaNatt',
-                headerStyle: {
-                  backgroundColor: '#66CDAA',
-                },
-                headerTintColor: '#fff',
-                headerTitleStyle: {
-                  fontWeight: 'bold',
-                  fontSize:25
-                },
-                headerBackTitle:' '
-              }} 
+                name="ListNatt"
+                component={ListNatt}
+                options={{ 
+                  title: 'Nattbi',
+                  headerTitleAlign: 'center',
+                  headerStyle: {
+                    backgroundColor: '#66CDAA',
+                  },
+                  headerTintColor: '#fff',
+                  headerTitleStyle: {
+                    fontWeight: 'bold',
+                    fontSize:25
+                  },
+                  headerBackTitle:' ',
+                  headerShadowVisible: false
+                }} 
+              />
+
+              <Stack.Screen
+                name="Invitation"
+                component={Invitation}
+                options={{ 
+                  title: 'Invitation',
+                  headerTitleAlign: 'center',
+                  headerStyle: {
+                    backgroundColor: '#66CDAA',
+                  },
+                  headerTintColor: '#fff',
+                  headerTitleStyle: {
+                    fontWeight: 'bold',
+                    fontSize:25
+                  },
+                  headerBackTitle:' ',
+                  headerShadowVisible: false
+                }} 
               />
 
           </Stack.Navigator>
@@ -77,7 +104,7 @@
               name="Information" 
               component={Information}
               options={{ 
-                title: 'Prenez connaissance',
+                title: 'Bon à savoir',
                 headerStyle: {
                   backgroundColor: '#66CDAA',
                 },

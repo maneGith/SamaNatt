@@ -8,7 +8,7 @@ import {
     TouchableOpacity,
     Platform
     } from 'react-native';
-import Logo from '../../assets/images/koppar.jpeg'
+import Logo from '../../assets/images/logo.png'
 import CustomTextInput from '../components/CustomTextInput';
 import Flag from '../../assets/images/drapeau-senegal.png'
 import ClavierNumerique from '../components/ClavierNumerique';
@@ -30,7 +30,7 @@ const Login =  ({ navigation, isConnected, setIsConnected }) => {
                 resizeMode="contain"
             />
             <View>
-                <Text style={{fontSize:30, color:'#000'}}>SamaNatt</Text>
+                <Text style={{fontSize:30, fontWeight:'bold', fontStyle: 'italic'}}>SamaNatt</Text>
             </View>
 
             <View style={{ alignItems: 'center',paddingTop:10}}>
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     },
     logo: {
         width: '100%',
-       maxHeight: 50,
+       maxHeight: 80,
        marginBottom:5
     },
     iconFlag: {
