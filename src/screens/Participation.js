@@ -1,23 +1,71 @@
 import React from 'react';
-import {  SafeAreaView, View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import {  
+    SafeAreaView,
+     View,
+      Text, 
+      StyleSheet,
+       TouchableOpacity,
+        Image,
+        ScrollView,
+        StatusBar,
+        Platform,
+        useWindowDimensions
+     } from 'react-native';
 
 
 import cotisation from '../../assets/images/cotisation.png';
 import invitation from '../../assets/images/invitation.jpeg';
-import manuel from '../../assets/images/depot-argent.png';
+import samanatt from '../../assets/images/logo.png';
 import wave from '../../assets/images/wave.png';
 import om from '../../assets/images/om.png';
 import flecheme from '../../assets/images/fleche-me.png';
 import flecheyou from '../../assets/images/fleche-you.png';
+import menupoints from '../../assets/images/menu-points.png';
 
 
 
 
 const Participation =  ({ navigation }) => {
+
+    const {height} = useWindowDimensions();
+
     return ( 
         <SafeAreaView style={styles.root}>
-             <View>
-            <View style={styles.buttonswitcherSection}>
+            <StatusBar translucent barStyle="light-content" backgroundColor='#66CDAA'/>
+
+            <View style={{flexDirection:'row', height:70, backgroundColor:'#66CDAA', position:'absolute',
+                width: "100%",
+                height: 100, // For all devices, even X, XS Max
+                top: 0,
+                left: 0,zIndex:100
+                        }}>
+                <View style={{width:'15%', justifyContent:'center', paddingLeft:15 , paddingTop:20}}>
+                    <TouchableOpacity
+                        onPress={()=>{
+                            navigation.navigate('Menu');
+                        }}
+                    >
+                            <Image 
+                                source={menupoints}  
+                                style={styles.iconMenu}
+                                resizeMode="contain"
+                            />
+                    </TouchableOpacity>
+                </View>
+               
+                <View style={{width:'70%',justifyContent:'center', alignItems:'center', paddingTop:20}}>
+                    <Text style={{color:'#fff', fontWeight: 'bold',fontSize:25}}>SamaNatt</Text>
+                    <Text style={{color:'#340034', fontSize:20, fontWeight:'400'}}>(77 743 74 44)</Text>
+                </View>
+
+                <View style={{width:'15%',justifyContent:'center', alignItems:'flex-end', paddingRight:15, paddingTop:20}}>
+                    <Text></Text>
+                </View>
+            
+            </View>
+           
+       
+            <View style={[styles.buttonswitcherSection, {marginTop:Platform.OS==='ios'?50:100}]}>
                 
                 
 
@@ -35,7 +83,7 @@ const Participation =  ({ navigation }) => {
                                 resizeMode="contain"
                             />
                         </View>
-                        <Text style={{fontSize:20, color:'#5f6368', fontWeight:'bold'}}>Nattbi</Text>
+                        <Text style={{fontSize:20, color:'#5f6368', fontWeight:'bold'}}>Natts</Text>
                     </TouchableOpacity>
                 </View>
                 
@@ -53,36 +101,38 @@ const Participation =  ({ navigation }) => {
                                 resizeMode="contain"
                             />
                         </View>
-                        <Text style={{fontSize:20, color:'#5f6368', fontWeight:'bold'}}>Invitation</Text>
+                        <Text style={{fontSize:20, color:'#5f6368', fontWeight:'bold'}}>Souscription</Text>
                     </TouchableOpacity>
                 </View>
             </View>
-           </View>
-
+       
+            <View style={{height:40,padding:5}}>
+                <Text style={{color:'#340034', fontSize:20, fontWeight:'400'}}>Mes versements</Text>
+            </View>
             
-            
-
-            <View style={{backgroundColor:'#fff', marginTop:15}}>
-                
+            <View style={{height:Platform.OS=='ios'?height-250:height-245, backgroundColor:'#fff'}}>
+            <ScrollView>
+            <View style={{backgroundColor:'#fff'}}>
+        
                 <View style={{marginBottom:15}}>
                     <View style={styles.versementNattSectionMontant}>
 
                         <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
                             <Text 
-                                style={{fontWeight:'bold',fontSize:16}}>10 Jan 2022
+                                style={{color:'#000',fontWeight:'bold',fontSize:16}}>10 Jan 2022
                             </Text>
                         </View>
 
                         <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
                             <Image 
-                                source={manuel}  
+                                source={samanatt}  
                                 style={styles.iconManuel}
                                 resizeMode="contain"
                             />
                         </View>
                         <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
                                 <Text 
-                                        style={{fontWeight:'bold',fontSize:16}}>10.000.000F
+                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
                                 </Text>
                         </View>
 
@@ -107,20 +157,20 @@ const Participation =  ({ navigation }) => {
 
                         <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
                             <Text 
-                                style={{fontWeight:'bold',fontSize:16}}>10 Jan 2022
+                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Jan 2022
                             </Text>
                         </View>
 
                         <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
                             <Image 
-                                source={manuel}  
+                                source={samanatt}  
                                 style={styles.iconManuel}
                                 resizeMode="contain"
                             />
                         </View>
                         <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
                                 <Text 
-                                        style={{fontWeight:'bold',fontSize:16}}>10.000F
+                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>10.000F
                                 </Text>
                         </View>
 
@@ -145,7 +195,7 @@ const Participation =  ({ navigation }) => {
 
                         <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
                             <Text 
-                                style={{fontWeight:'bold',fontSize:16}}>10 Fèv 2022
+                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Fèv 2022
                             </Text>
                         </View>
 
@@ -158,7 +208,7 @@ const Participation =  ({ navigation }) => {
                         </View>
                         <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
                                 <Text 
-                                        style={{fontWeight:'bold',fontSize:16}}>10.000F
+                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>10.000F
                                 </Text>
                         </View>
 
@@ -183,7 +233,7 @@ const Participation =  ({ navigation }) => {
 
                         <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
                             <Text 
-                                style={{fontWeight:'bold',fontSize:16}}>10 Fèv 2022
+                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Fèv 2022
                             </Text>
                         </View>
 
@@ -196,7 +246,7 @@ const Participation =  ({ navigation }) => {
                         </View>
                         <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
                                 <Text 
-                                        style={{fontWeight:'bold',fontSize:16}}>20.000F
+                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
                                 </Text>
                         </View>
 
@@ -221,7 +271,7 @@ const Participation =  ({ navigation }) => {
 
                         <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
                             <Text 
-                                style={{fontWeight:'bold',fontSize:16}}>10 Mars 2022
+                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Mars 2022
                             </Text>
                         </View>
 
@@ -234,7 +284,7 @@ const Participation =  ({ navigation }) => {
                         </View>
                         <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
                                 <Text 
-                                        style={{fontWeight:'bold',fontSize:16}}>20.000F
+                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
                                 </Text>
                         </View>
 
@@ -254,8 +304,162 @@ const Participation =  ({ navigation }) => {
                     </View>
                 </View>
 
+                <View style={{marginBottom:15}}>
+                    <View style={styles.versementNattSectionMontant}>
+
+                        <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
+                            <Text 
+                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Mars 2022
+                            </Text>
+                        </View>
+
+                        <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
+                            <Image 
+                                source={wave}  
+                                style={styles.iconManuel}
+                                resizeMode="contain"
+                            />
+                        </View>
+                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                <Text 
+                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
+                                </Text>
+                        </View>
+
+                    </View>
+                    <View style={styles.descversementNattSectionMontant}>
+                        <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
+                            <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Tabaski 2023</Text>
+                        </View>
+
+                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                            <Image 
+                                    source={flecheme}  
+                                    style={styles.iconManuel}
+                                    resizeMode="contain"
+                                />
+                        </View>
+                    </View>
+                </View>
+                <View style={{marginBottom:15}}>
+                    <View style={styles.versementNattSectionMontant}>
+
+                        <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
+                            <Text 
+                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Mars 2022
+                            </Text>
+                        </View>
+
+                        <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
+                            <Image 
+                                source={wave}  
+                                style={styles.iconManuel}
+                                resizeMode="contain"
+                            />
+                        </View>
+                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                <Text 
+                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
+                                </Text>
+                        </View>
+
+                    </View>
+                    <View style={styles.descversementNattSectionMontant}>
+                        <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
+                            <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Tabaski 2023</Text>
+                        </View>
+
+                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                            <Image 
+                                    source={flecheme}  
+                                    style={styles.iconManuel}
+                                    resizeMode="contain"
+                                />
+                        </View>
+                    </View>
+                </View>
+                <View style={{marginBottom:15}}>
+                    <View style={styles.versementNattSectionMontant}>
+
+                        <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
+                            <Text 
+                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Mars 2022
+                            </Text>
+                        </View>
+
+                        <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
+                            <Image 
+                                source={wave}  
+                                style={styles.iconManuel}
+                                resizeMode="contain"
+                            />
+                        </View>
+                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                <Text 
+                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
+                                </Text>
+                        </View>
+
+                    </View>
+                    <View style={styles.descversementNattSectionMontant}>
+                        <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
+                            <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Tabaski 2023</Text>
+                        </View>
+
+                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                            <Image 
+                                    source={flecheme}  
+                                    style={styles.iconManuel}
+                                    resizeMode="contain"
+                                />
+                        </View>
+                    </View>
+                </View>
+                <View style={{marginBottom:15}}>
+                    <View style={styles.versementNattSectionMontant}>
+
+                        <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
+                            <Text 
+                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Mars 2022
+                            </Text>
+                        </View>
+
+                        <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
+                            <Image 
+                                source={wave}  
+                                style={styles.iconManuel}
+                                resizeMode="contain"
+                            />
+                        </View>
+                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                <Text 
+                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
+                                </Text>
+                        </View>
+
+                    </View>
+                    <View style={styles.descversementNattSectionMontant}>
+                        <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
+                            <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Scolarite 2023</Text>
+                        </View>
+
+                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                            <Image 
+                                    source={flecheme}  
+                                    style={styles.iconManuel}
+                                    resizeMode="contain"
+                                />
+                        </View>
+                    </View>
+                </View>
+
+              
             </View>
-           
+
+          
+        </ScrollView>
+        </View>
+       
         </SafeAreaView>
      );
 }
@@ -266,11 +470,15 @@ const styles = StyleSheet.create({
         backgroundColor: '#e5e7ec',
         flexDirection:'column'
     },
-    buttonswitcherSection: {
+    StatusBar: {
+        backgroundColor: '#66CDAA'
+    },
+    buttonswitcherSection: { 
         flexDirection: 'row',
         width:'100%',
         height:100,
-        backgroundColor:'#fff'
+        backgroundColor:'#fff',
+       
         
     },
     versementNattSectionMontant: {
@@ -288,6 +496,10 @@ const styles = StyleSheet.create({
     icon: {
         width:55,
         height:55,
+    },
+    iconMenu: {
+        width:40,
+        height:40,
     },
     iconManuel: {
         width:25,

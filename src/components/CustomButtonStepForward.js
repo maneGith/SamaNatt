@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, TouchableOpacity, Image } from 'react-native';
 import Imga  from '../../assets/images/step-fw-a.jpeg';
 import Imgd  from '../../assets/images/step-fw-d.jpeg';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -10,8 +11,13 @@ const CustomButtonStepForward = ({ desabledValue, setIsConnected }) => {
         <TouchableOpacity 
             style={styles.container}
             disabled={desabledValue}
-            onPress={()=>{
-                setIsConnected(true);
+            onPress={async () => {
+                try {
+                    setIsConnected(true);
+                    await AsyncStorage.setItem("@isConnected", 'true');
+                } catch (error) {
+                    console.log(error);
+                } 
             }}
         >
            <Image 

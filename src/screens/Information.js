@@ -9,7 +9,7 @@ import {
 
 import wave from '../../assets/images/wave.png';
 import om from '../../assets/images/om.png';
-import mannuel from '../../assets/images/depot-argent.png';
+import samanatt from '../../assets/images/logo.png';
 
 
 const Information = () => {
@@ -36,7 +36,7 @@ const Information = () => {
                     
                     <View style={{width:'33%', alignItems:'center'}}>
                         <Image 
-                            source={mannuel}  
+                            source={samanatt}  
                             style={styles.iconMannuel}
                             resizeMode="contain"
                         />

@@ -13,7 +13,7 @@ import CustomTextInput from '../components/CustomTextInput';
 import Flag from '../../assets/images/drapeau-senegal.png'
 import ClavierNumerique from '../components/ClavierNumerique';
 
-const Login =  ({ navigation, isConnected, setIsConnected }) => {
+const Login =  ({ navigation, setIsConnected }) => {
 
     const [onPressedButtonValue, setOnPressedButtonValue] = useState('');
     
