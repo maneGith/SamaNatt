@@ -18,6 +18,8 @@ const Login =  ({ navigation, setIsConnected }) => {
     const [onPressedButtonValue, setOnPressedButtonValue] = useState('');
     
     const {height} = useWindowDimensions();
+   
+
 
     return ( 
         <View style={[styles.root, {paddingTop:Platform.OS === 'ios'?50:20}]}>

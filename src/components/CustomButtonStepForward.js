@@ -3,22 +3,17 @@ import {StyleSheet, TouchableOpacity, Image } from 'react-native';
 import Imga  from '../../assets/images/step-fw-a.jpeg';
 import Imgd  from '../../assets/images/step-fw-d.jpeg';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AuthContext } from './Context';
 
 
-
-const CustomButtonStepForward = ({ desabledValue, setIsConnected }) => {
+const CustomButtonStepForward = ({ desabledValue, onPressedButtonValue }) => {
+    const {signIn} = React.useContext(AuthContext);
+   
     return (  
         <TouchableOpacity 
             style={styles.container}
             disabled={desabledValue}
-            onPress={async () => {
-                try {
-                    setIsConnected(true);
-                    await AsyncStorage.setItem("@isConnected", 'true');
-                } catch (error) {
-                    console.log(error);
-                } 
-            }}
+            onPress={() => {signIn(onPressedButtonValue)}}
         >
            <Image 
                 source={desabledValue?Imgd:Imga}  

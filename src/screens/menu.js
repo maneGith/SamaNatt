@@ -5,10 +5,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import iconepart from '../../assets/images/icone-part.png';
 import iconemodif from '../../assets/images/icone-modification.png';
 import iconedecon from '../../assets/images/icone-deconnexion.png';
+import { AuthContext } from '../components/Context';
 
 
+const Menu =  ({  }) => {
+    const {signOut} = React.useContext(AuthContext);
 
-const Menu =  ({ navigation, setIsConnected }) => {
     return ( 
         <View style={styles.root}>
             <View style={{height:20,padding:5}}>
@@ -51,9 +53,7 @@ const Menu =  ({ navigation, setIsConnected }) => {
 
                 <View style={{marginBottom:40}}>
                     <TouchableOpacity
-                        onPress={()=>{
-                            setIsConnected(false);
-                        }}
+                        onPress={()=>{signOut()}}
                     >
                         <View style={{flexDirection:'row'}}>
                             <View style={{alignItems:'flex-start', justifyContent:'center'}}>

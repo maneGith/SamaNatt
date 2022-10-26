@@ -7,7 +7,12 @@
  */
 
  import React , { useState, useEffect } from 'react';
- import { Image, StyleSheet, TouchableOpacity, Text } from 'react-native';
+ import { 
+        Image,
+        StyleSheet,
+        TouchableOpacity,
+        View,
+        ActivityIndicator } from 'react-native';
  import AsyncStorage from '@react-native-async-storage/async-storage';
  
  import Login from './src/screens/Login';
@@ -21,110 +26,107 @@
 
  import { NavigationContainer } from '@react-navigation/native';
  import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
+ import { AuthContext } from './src/components/Context';
  import addNatt from './assets/images/icone-new.png'
  
  const Stack = createNativeStackNavigator();
+
+
  
  const App = () => {
 
   // Verify isConnected value stored
   // Switch screen according to this value
   const [isConnected, setIsConnected] = useState(false);
+  //const [isLoading, setIsLoading] = React.useState(false);
+ //const [userToken, setUserToken] = React.useState(null);
+ const initialLoginState = {
+  isLoading: true,
+  userPhone: null,
+  userToken: null
 
+ }
+
+ const loginreducer = (prevState, action) => {
+    switch( action.type ){
+      case 'RESTORE_TOKEN':
+        return {
+          ...prevState,
+          userToken: action.token,
+          isLoading: false,
+        };
+      case 'SIGN_IN':
+        return {
+          ...prevState,
+          userPhone: action.id,
+          userToken: action.token,
+          isLoading: false,
+        };
+      case 'SIGN_OUT':
+        return {
+          ...prevState,
+          userPhone: null,
+          userToken: null,
+          isLoading: false,
+        };
+    }
+ }
+
+ const [state, dispatch] = React.useReducer(loginreducer, initialLoginState);
+
+  const authContext = React.useMemo(() => ({
+    signIn: async(userPhone) => {
+        let userToken
+        userToken = null;
+        try {
+          userToken =   'dummy-auth-token';
+          await AsyncStorage.setItem('userToken', userToken);
+        } catch (error) {
+          console.log(error);
+        }
+        dispatch({ type: 'SIGN_IN', id: userPhone, token: userToken });
+    },
+    signOut: async() => {
+      try {
+        await AsyncStorage.removeItem('userToken');
+      } catch (error) {
+        console.log(error);
+      }
+      dispatch({ type: 'SIGN_OUT' });
+    }
+  }), []);
   
+  useEffect(() => {
+    setTimeout(async() => {
+      let userToken;
+      try {
+        userToken = await AsyncStorage.getItem('userToken');
+      } catch (error) {
+        console.log(error);
+      }
+      dispatch({ type: 'RESTORE_TOKEN', token: userToken });
+    }, 1000);
+  }, []);
+
+ 
+  if(state.isLoading) {
+    return (
+      <View style={{flex:1, justifyContent:"center", alignItems:'center'}}>
+        <ActivityIndicator size="large" />
+      </View>
+    )
+  };
+
+
   
 
    return ( 
-    
-    <NavigationContainer> 
-      {isConnected?(
-        
-          <Stack.Navigator
-          initialRouteName='Participation'
-          >
-
-              <Stack.Screen
-                name="Participation"
-                component={Participation}
-                options={{ 
-                headerShown:false
-                }} 
-              />
-
-              <Stack.Screen
-                name="ListNatt"
-                component={ListNatt}
-                options={{ 
-                  title: 'Mes Natts',
-                  headerTitleAlign: 'left',
-                  headerStyle: {
-                    backgroundColor: '#66CDAA',
-                  },
-                  headerTintColor: '#fff',
-                  headerTitleStyle: {
-                    fontWeight: 'bold',
-                    fontSize:25
-                  },
-                  headerBackTitle:' ',
-                  headerShadowVisible: false,
-                  headerRight: ()=>(
-                    <TouchableOpacity>
-                      <Image 
-                        source={addNatt}  
-                        style={styles.icon}
-                        resizeMode="contain"
-                      />
-                    </TouchableOpacity>
-                      
-                  )
-                }} 
-              />
-
-              <Stack.Screen
-                name="Invitation"
-                component={Invitation}
-                options={{ 
-                  title: 'Mes demandes à',
-                  headerTitleAlign: 'left',
-                  headerStyle: {
-                    backgroundColor: '#66CDAA',
-                  },
-                  headerTintColor: '#fff',
-                  headerTitleStyle: {
-                    fontWeight: 'bold',
-                    fontSize:25
-                  },
-                  headerBackTitle:' ',
-                  headerShadowVisible: false
-                }} 
-              />
-
-              <Stack.Screen
-                name="Menu"
-                options={{ 
-                  title: 'Menu',
-                  headerTitleAlign: 'left',
-                  headerStyle: {
-                    backgroundColor: '#66CDAA',
-                  },
-                  headerTintColor: '#fff',
-                  headerTitleStyle: {
-                    fontWeight: 'bold',
-                    fontSize:25
-                  },
-                  headerBackTitle:' ',
-                  headerShadowVisible: false
-                }} 
-              >
-                {(props) => <Menu {...props}  setIsConnected={setIsConnected} />}
-              </Stack.Screen>
-
-          </Stack.Navigator>
-
-        ):(
+      <AuthContext.Provider value={authContext}>
+        <NavigationContainer> 
+          
+          {state.userToken == null?(
+            
           <Stack.Navigator>
-
             <Stack.Screen
               name="Login"
               options={{headerShown: false}}>
@@ -146,11 +148,96 @@
                 headerBackTitle:' '
               }} 
             />
+          </Stack.Navigator>
 
-        </Stack.Navigator>
-          )
-      }
-    </NavigationContainer>
+            
+            ):(
+            <Stack.Navigator
+            initialRouteName='Participation'
+            >
+
+                <Stack.Screen
+                  name="Participation"
+                  component={Participation}
+                  options={{ 
+                  headerShown:false
+                  }} 
+                />
+
+                <Stack.Screen
+                  name="ListNatt"
+                  component={ListNatt}
+                  options={{ 
+                    title: 'Mes Natts',
+                    headerTitleAlign: 'left',
+                    headerStyle: {
+                      backgroundColor: '#66CDAA',
+                    },
+                    headerTintColor: '#fff',
+                    headerTitleStyle: {
+                      fontWeight: 'bold',
+                      fontSize:25
+                    },
+                    headerBackTitle:' ',
+                    headerShadowVisible: false,
+                    headerRight: ()=>(
+                      <TouchableOpacity>
+                        <Image 
+                          source={addNatt}  
+                          style={styles.icon}
+                          resizeMode="contain"
+                        />
+                      </TouchableOpacity>
+                        
+                    )
+                  }} 
+                />
+
+                <Stack.Screen
+                  name="Invitation"
+                  component={Invitation}
+                  options={{ 
+                    title: 'Mes demandes à',
+                    headerTitleAlign: 'left',
+                    headerStyle: {
+                      backgroundColor: '#66CDAA',
+                    },
+                    headerTintColor: '#fff',
+                    headerTitleStyle: {
+                      fontWeight: 'bold',
+                      fontSize:25
+                    },
+                    headerBackTitle:' ',
+                    headerShadowVisible: false
+                  }} 
+                />
+
+                <Stack.Screen
+                  name="Menu"
+                  options={{ 
+                    title: 'Menu',
+                    headerTitleAlign: 'left',
+                    headerStyle: {
+                      backgroundColor: '#66CDAA',
+                    },
+                    headerTintColor: '#fff',
+                    headerTitleStyle: {
+                      fontWeight: 'bold',
+                      fontSize:25
+                    },
+                    headerBackTitle:' ',
+                    headerShadowVisible: false
+                  }} 
+                >
+                  {(props) => <Menu {...props}  setIsConnected={setIsConnected} />}
+                </Stack.Screen>
+
+            </Stack.Navigator>
+
+              )
+          }
+        </NavigationContainer>
+      </AuthContext.Provider>
    );
 
 

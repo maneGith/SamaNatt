@@ -140,7 +140,8 @@ const ClavierNumerique = ({ onPressedButtonValue, setOnPressedButtonValue, ftSiz
                     <View style={{width: '33%', alignItems: 'center'}}>
                         <CustomButtonStepForward 
                             desabledValue={desabledValue}   
-                            setIsConnected={setIsConnected}  
+                            setIsConnected={setIsConnected} 
+                            onPressedButtonValue={onPressedButtonValue} 
                         />
                     </View>
                 </View>
