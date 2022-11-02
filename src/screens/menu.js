@@ -8,7 +8,7 @@ import iconedecon from '../../assets/images/icone-deconnexion.png';
 import { AuthContext } from '../components/Context';
 
 
-const Menu =  ({  }) => {
+const Menu =  ({ onPressedButtonValue }) => {
     const {signOut} = React.useContext(AuthContext);
 
     return ( 
@@ -64,7 +64,7 @@ const Menu =  ({  }) => {
                                 />
                             </View>
                             <View style={{alignItems:'flex-start', justifyContent:'center', paddingLeft:15, flex:1}}>
-                                <Text style={{color:'#000', fontSize:18}}>Se déconnecter</Text>
+                                <Text style={{color:'#000', fontSize:18}}>Se déconnecter {"\n"} ({onPressedButtonValue}) </Text>
                             </View>
                         </View>
                     </TouchableOpacity>

@@ -25,7 +25,7 @@ import menupoints from '../../assets/images/menu-points.png';
 
 
 
-const Participation =  ({ navigation }) => {
+const Participation =  ({ navigation, onPressedButtonValue }) => {
 
     const {height} = useWindowDimensions();
 
@@ -55,7 +55,7 @@ const Participation =  ({ navigation }) => {
                
                 <View style={{width:'70%',justifyContent:'center', alignItems:'center', paddingTop:20}}>
                     <Text style={{color:'#fff', fontWeight: 'bold',fontSize:25}}>SamaNatt</Text>
-                    <Text style={{color:'#340034', fontSize:20, fontWeight:'400'}}>(77 743 74 44)</Text>
+                    <Text style={{color:'#340034', fontSize:20, fontWeight:'400'}}>({onPressedButtonValue})</Text>
                 </View>
 
                 <View style={{width:'15%',justifyContent:'center', alignItems:'flex-end', paddingRight:15, paddingTop:20}}>

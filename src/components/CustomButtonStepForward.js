@@ -6,14 +6,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from './Context';
 
 
-const CustomButtonStepForward = ({ desabledValue, onPressedButtonValue }) => {
+const CustomButtonStepForward = ({ navigation, desabledValue, onPressedButtonValue }) => {
     const {signIn} = React.useContext(AuthContext);
    
     return (  
         <TouchableOpacity 
             style={styles.container}
             disabled={desabledValue}
-            onPress={() => {signIn(onPressedButtonValue)}}
+            onPress={() => {
+                if(onPressedButtonValue=='77 743 74 44'){
+                    navigation.navigate('Inscription');
+                }else{
+                    signIn(onPressedButtonValue);
+                }
+               
+            }}
         >
            <Image 
                 source={desabledValue?Imgd:Imga}  

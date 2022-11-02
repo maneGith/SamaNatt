@@ -13,9 +13,9 @@ import CustomTextInput from '../components/CustomTextInput';
 import Flag from '../../assets/images/drapeau-senegal.png'
 import ClavierNumerique from '../components/ClavierNumerique';
 
-const Login =  ({ navigation, setIsConnected }) => {
+const Login =  ({ navigation, setIsConnected, onPressedButtonValue, setOnPressedButtonValue }) => {
 
-    const [onPressedButtonValue, setOnPressedButtonValue] = useState('');
+   
     
     const {height} = useWindowDimensions();
    
@@ -76,6 +76,7 @@ const Login =  ({ navigation, setIsConnected }) => {
                 onPressedButtonValue={onPressedButtonValue}
                 setOnPressedButtonValue={setOnPressedButtonValue}
                 setIsConnected={setIsConnected}
+                navigation={navigation}
             /> 
 
             

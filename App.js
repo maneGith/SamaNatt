@@ -23,6 +23,7 @@
  import ListNatt from './src/screens/ListNatt';
  import Invitation from './src/screens/Invitation';
  import Menu from './src/screens/menu';
+ import Inscription from './src/screens/Inscription';
 
  import { NavigationContainer } from '@react-navigation/native';
  import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -38,6 +39,7 @@
   // Verify isConnected value stored
   // Switch screen according to this value
   const [isConnected, setIsConnected] = useState(false);
+  const [onPressedButtonValue, setOnPressedButtonValue] = useState('');
   //const [isLoading, setIsLoading] = React.useState(false);
  //const [userToken, setUserToken] = React.useState(null);
  const initialLoginState = {
@@ -79,8 +81,11 @@
         let userToken
         userToken = null;
         try {
+          //From Data Base
           userToken =   'dummy-auth-token';
+
           await AsyncStorage.setItem('userToken', userToken);
+          await AsyncStorage.setItem('userPhone', userPhone);
         } catch (error) {
           console.log(error);
         }
@@ -89,6 +94,8 @@
     signOut: async() => {
       try {
         await AsyncStorage.removeItem('userToken');
+        await AsyncStorage.removeItem('userPhone');
+        setOnPressedButtonValue('');
       } catch (error) {
         console.log(error);
       }
@@ -101,6 +108,12 @@
       let userToken;
       try {
         userToken = await AsyncStorage.getItem('userToken');
+        userPhone = await AsyncStorage.getItem('userPhone');
+        if (userPhone==null){
+          setOnPressedButtonValue('');
+        }else{
+          setOnPressedButtonValue(userPhone);
+        }
       } catch (error) {
         console.log(error);
       }
@@ -130,13 +143,29 @@
             <Stack.Screen
               name="Login"
               options={{headerShown: false}}>
-                {(props) => <Login {...props}  setIsConnected={setIsConnected} />}
+                {(props) => <Login {...props}  onPressedButtonValue= {onPressedButtonValue} setOnPressedButtonValue={setOnPressedButtonValue} setIsConnected={setIsConnected} />}
             </Stack.Screen>
             <Stack.Screen 
               name="Information" 
               component={Information}
               options={{ 
-                title: 'Bon à savoir',
+                title: 'Information',
+                headerStyle: {
+                  backgroundColor: '#66CDAA',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                  fontSize:25
+                },
+                headerBackTitle:' '
+              }} 
+            />
+            <Stack.Screen 
+              name="Inscription" 
+              component={Inscription}
+              options={{ 
+                title: 'Inscription',
                 headerStyle: {
                   backgroundColor: '#66CDAA',
                 },
@@ -158,11 +187,12 @@
 
                 <Stack.Screen
                   name="Participation"
-                  component={Participation}
                   options={{ 
                   headerShown:false
-                  }} 
-                />
+                  }} >
+                        {(props) => <Participation {...props}  onPressedButtonValue= {onPressedButtonValue} />}
+                </Stack.Screen>
+
 
                 <Stack.Screen
                   name="ListNatt"
@@ -229,7 +259,7 @@
                     headerShadowVisible: false
                   }} 
                 >
-                  {(props) => <Menu {...props}  setIsConnected={setIsConnected} />}
+                  {(props) => <Menu {...props}  onPressedButtonValue= {onPressedButtonValue} setIsConnected={setIsConnected} />}
                 </Stack.Screen>
 
             </Stack.Navigator>
