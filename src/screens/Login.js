@@ -13,7 +13,7 @@ import CustomTextInput from '../components/CustomTextInput';
 import Flag from '../../assets/images/drapeau-senegal.png'
 import ClavierNumerique from '../components/ClavierNumerique';
 
-const Login =  ({ navigation, setIsConnected, onPressedButtonValue, setOnPressedButtonValue }) => {
+const Login =  ({ navigation, onPressedButtonValue, setOnPressedButtonValue, setPrenom, setNom }) => {
 
    
     
@@ -75,7 +75,8 @@ const Login =  ({ navigation, setIsConnected, onPressedButtonValue, setOnPressed
                 fgColor={'#000'}
                 onPressedButtonValue={onPressedButtonValue}
                 setOnPressedButtonValue={setOnPressedButtonValue}
-                setIsConnected={setIsConnected}
+                setPrenom={setPrenom}
+                setNom={setNom}
                 navigation={navigation}
             /> 
 

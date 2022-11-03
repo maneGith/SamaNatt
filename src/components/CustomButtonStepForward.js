@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from './Context';
 
 
-const CustomButtonStepForward = ({ navigation, desabledValue, onPressedButtonValue }) => {
+const CustomButtonStepForward = ({ navigation, desabledValue, onPressedButtonValue, setPrenom, setNom }) => {
     const {signIn} = React.useContext(AuthContext);
    
     return (  
@@ -14,7 +14,9 @@ const CustomButtonStepForward = ({ navigation, desabledValue, onPressedButtonVal
             style={styles.container}
             disabled={desabledValue}
             onPress={() => {
-                if(onPressedButtonValue=='77 743 74 44'){
+                if(onPressedButtonValue!='77 743 74 44'){
+                    setPrenom('');
+                    setNom('');
                     navigation.navigate('Inscription');
                 }else{
                     signIn(onPressedButtonValue);

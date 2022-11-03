@@ -4,7 +4,7 @@ import CustomButton from './CustomButton';
 import CustomButtonDelete from './CustomButtonDelete';
 import CustomButtonStepForward from './CustomButtonStepForward';
 
-const ClavierNumerique = ({ navigation, onPressedButtonValue, setOnPressedButtonValue, ftSize, fgColor, setIsConnected}) => {
+const ClavierNumerique = ({ navigation, onPressedButtonValue, setOnPressedButtonValue, ftSize, fgColor, setPrenom, setNom}) => {
   
     const [desabledValue, setDesabledValue] = useState(true);
 
@@ -140,7 +140,8 @@ const ClavierNumerique = ({ navigation, onPressedButtonValue, setOnPressedButton
                     <View style={{width: '33%', alignItems: 'center'}}>
                         <CustomButtonStepForward 
                             desabledValue={desabledValue}   
-                            setIsConnected={setIsConnected} 
+                            setPrenom={setPrenom}
+                            setNom={setNom}
                             onPressedButtonValue={onPressedButtonValue} 
                             navigation={navigation}
                         />

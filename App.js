@@ -12,6 +12,7 @@
         StyleSheet,
         TouchableOpacity,
         View,
+        Text,
         ActivityIndicator } from 'react-native';
  import AsyncStorage from '@react-native-async-storage/async-storage';
  
@@ -24,6 +25,7 @@
  import Invitation from './src/screens/Invitation';
  import Menu from './src/screens/menu';
  import Inscription from './src/screens/Inscription';
+ import CodeSecret from './src/screens/CodeSecret';
 
  import { NavigationContainer } from '@react-navigation/native';
  import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -40,6 +42,8 @@
   // Switch screen according to this value
   const [isConnected, setIsConnected] = useState(false);
   const [onPressedButtonValue, setOnPressedButtonValue] = useState('');
+  const [prenom, setPrenom] = useState('');
+  const [nom, setNom] = useState('');
   //const [isLoading, setIsLoading] = React.useState(false);
  //const [userToken, setUserToken] = React.useState(null);
  const initialLoginState = {
@@ -143,7 +147,8 @@
             <Stack.Screen
               name="Login"
               options={{headerShown: false}}>
-                {(props) => <Login {...props}  onPressedButtonValue= {onPressedButtonValue} setOnPressedButtonValue={setOnPressedButtonValue} setIsConnected={setIsConnected} />}
+                {(props) => <Login {...props}  onPressedButtonValue= {onPressedButtonValue} setOnPressedButtonValue={setOnPressedButtonValue}  
+                setPrenom={setPrenom} setNom={setNom} />}
             </Stack.Screen>
             <Stack.Screen 
               name="Information" 
@@ -163,7 +168,6 @@
             />
             <Stack.Screen 
               name="Inscription" 
-              component={Inscription}
               options={{ 
                 title: 'Inscription',
                 headerStyle: {
@@ -174,9 +178,32 @@
                   fontWeight: 'bold',
                   fontSize:25
                 },
+                headerBackTitle:' ',
+                headerRight: ()=>(
+                  <Text style={{fontSize:20, fontWeight:'bold'}}>{onPressedButtonValue}</Text>
+                )
+              }} 
+            >
+               {(props) => <Inscription {...props}  prenom={prenom} setPrenom= {setPrenom} nom={nom} setNom= {setNom} />}
+            </Stack.Screen>
+            <Stack.Screen 
+              name="CodeSecret" 
+              options={{ 
+                title: 'Choix Code Secret',
+                headerStyle: {
+                  backgroundColor: '#66CDAA',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                  fontSize:25
+                },
                 headerBackTitle:' '
               }} 
-            />
+            >
+              {(props) => <CodeSecret {...props}  onPressedButtonValue= {onPressedButtonValue}  prenom={prenom} nom={nom} />}
+            </Stack.Screen>
+            
           </Stack.Navigator>
 
             
