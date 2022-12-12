@@ -5,6 +5,8 @@ import wave from '../../assets/images/wave.png';
 import om from '../../assets/images/om.png';
 import flechehorizM from '../../assets/images/flechehorizM.png';
 
+import addNatt from '../../assets/images/icone-new.png';
+
 
 const ListNatt =  ({navigation }) => {
     return (  
@@ -23,9 +25,7 @@ const ListNatt =  ({navigation }) => {
 
                             <View style={{width:'20%', alignItems:'flex-end', justifyContent:'center'}}>
                                 <Text></Text>
-                            </View>
-                            
-
+                            </View>                         
                         </View>
                         <View style={styles.descversementNattSectionMontant}>
                             <View style={{width:'80%', alignItems:'flex-start', justifyContent:'center'}}>

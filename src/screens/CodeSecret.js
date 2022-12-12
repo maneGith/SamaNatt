@@ -4,11 +4,15 @@ import {
      Text,
      StyleSheet,
      TextInput,
-    TouchableOpacity
+    TouchableOpacity,
+    Alert
  } from 'react-native';
+ import { AuthContext } from '../components/Context';
 
 const CodeSecret = ({ onPressedButtonValue, prenom, nom }) => {
     
+    const {signIn} = React.useContext(AuthContext);
+
     const [desablePin, setDesablePin] = useState(true);
 
     const pin1Ref = useRef(null);
@@ -40,6 +44,41 @@ const CodeSecret = ({ onPressedButtonValue, prenom, nom }) => {
         }else{
             setDesablePin(false);
         }  
+    }
+
+    const date =  new Date();
+    const currentYear = date.getFullYear();
+    const currentMonth = date.getMonth() + 1; 
+    const today = date.getDate();
+    const created_at =today+'-'+currentMonth+'-'+currentYear;
+
+              
+    const jsonData = JSON.stringify({
+        prenom: prenom,
+        nom: nom,
+        telephone: onPressedButtonValue, 
+        code: pin1+pin2+pin3+pin4,
+        created_at: created_at
+    })
+
+    const insertUser = (data) => {
+       fetch('http://10.0.2.2:3001/register', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: data
+       }).then((response) => response.json())
+            .then((responseJson) => {
+                if (responseJson.length > 0) {
+                    //console.log(responseJson[0]); 
+                    signIn(responseJson[0]);
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
     
@@ -247,9 +286,7 @@ const CodeSecret = ({ onPressedButtonValue, prenom, nom }) => {
                     <TouchableOpacity
                         style={{backgroundColor:desablePin?'#D2D2D2':'#66CDAA',padding:10, borderRadius:5}}
                         disabled ={desablePin}
-                        onPress={() => {
-                            alert('Création Utilisateur Natt');
-                        }}
+                        onPress={() => {insertUser(jsonData)}}
                      >
                         <Text style={{fontWeight:'bold', fontSize:22, color:'#fff'}}>Je m'inscris</Text>
                     </TouchableOpacity>

@@ -28,6 +28,7 @@ import menupoints from '../../assets/images/menu-points.png';
 const Participation =  ({ navigation, onPressedButtonValue }) => {
 
     const {height} = useWindowDimensions();
+   
 
     return ( 
         <SafeAreaView style={styles.root}>
@@ -54,7 +55,7 @@ const Participation =  ({ navigation, onPressedButtonValue }) => {
                 </View>
                
                 <View style={{width:'70%',justifyContent:'center', alignItems:'center', paddingTop:20}}>
-                    <Text style={{color:'#fff', fontWeight: 'bold',fontSize:25}}>SamaNatt</Text>
+                    <Text style={{color:'#fff', fontWeight: 'bold',fontSize:25}}>Samanatt</Text>
                     <Text style={{color:'#340034', fontSize:20, fontWeight:'400'}}>({onPressedButtonValue})</Text>
                 </View>
 
@@ -101,7 +102,7 @@ const Participation =  ({ navigation, onPressedButtonValue }) => {
                                 resizeMode="contain"
                             />
                         </View>
-                        <Text style={{fontSize:20, color:'#5f6368', fontWeight:'bold'}}>Souscription</Text>
+                        <Text style={{fontSize:20, color:'#5f6368', fontWeight:'bold'}}>Adhésions</Text>
                     </TouchableOpacity>
                 </View>
             </View>

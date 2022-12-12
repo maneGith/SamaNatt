@@ -23,9 +23,11 @@
  import Participation from './src/screens/Participation';
  import ListNatt from './src/screens/ListNatt';
  import Invitation from './src/screens/Invitation';
- import Menu from './src/screens/menu';
+ import Menu from './src/screens/Menu';
  import Inscription from './src/screens/Inscription';
  import CodeSecret from './src/screens/CodeSecret';
+ import CodeForLogin from './src/screens/CodeForLogin';
+ import CreationNatt from './src/screens/CreationNatt';
 
  import { NavigationContainer } from '@react-navigation/native';
  import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -40,7 +42,7 @@
 
   // Verify isConnected value stored
   // Switch screen according to this value
-  const [isConnected, setIsConnected] = useState(false);
+  const [userData, setUserData] = useState(null);
   const [onPressedButtonValue, setOnPressedButtonValue] = useState('');
   const [prenom, setPrenom] = useState('');
   const [nom, setNom] = useState('');
@@ -48,7 +50,7 @@
  //const [userToken, setUserToken] = React.useState(null);
  const initialLoginState = {
   isLoading: true,
-  userPhone: null,
+  userData: null,
   userToken: null
 
  }
@@ -64,14 +66,14 @@
       case 'SIGN_IN':
         return {
           ...prevState,
-          userPhone: action.id,
+          userData: action.id,
           userToken: action.token,
           isLoading: false,
         };
       case 'SIGN_OUT':
         return {
           ...prevState,
-          userPhone: null,
+          userData: null,
           userToken: null,
           isLoading: false,
         };
@@ -81,24 +83,25 @@
  const [state, dispatch] = React.useReducer(loginreducer, initialLoginState);
 
   const authContext = React.useMemo(() => ({
-    signIn: async(userPhone) => {
+    signIn: async(userData) => {
         let userToken
         userToken = null;
         try {
           //From Data Base
           userToken =   'dummy-auth-token';
+          const jsonValue = JSON.stringify(userData);
 
           await AsyncStorage.setItem('userToken', userToken);
-          await AsyncStorage.setItem('userPhone', userPhone);
+          await AsyncStorage.setItem('userData', jsonValue);
         } catch (error) {
           console.log(error);
         }
-        dispatch({ type: 'SIGN_IN', id: userPhone, token: userToken });
+        dispatch({ type: 'SIGN_IN', id: userData, token: userToken });
     },
     signOut: async() => {
       try {
         await AsyncStorage.removeItem('userToken');
-        await AsyncStorage.removeItem('userPhone');
+        await AsyncStorage.removeItem('userData');
         setOnPressedButtonValue('');
       } catch (error) {
         console.log(error);
@@ -110,13 +113,18 @@
   useEffect(() => {
     setTimeout(async() => {
       let userToken;
+      let userData;
       try {
         userToken = await AsyncStorage.getItem('userToken');
-        userPhone = await AsyncStorage.getItem('userPhone');
-        if (userPhone==null){
+        userData = await AsyncStorage.getItem('userData');
+        if (userData==null){
           setOnPressedButtonValue('');
         }else{
-          setOnPressedButtonValue(userPhone);
+          console.log(userData);
+          userData = JSON.parse(userData);
+          setOnPressedButtonValue(userData.telephone);
+          signIn(userData);
+     
         }
       } catch (error) {
         console.log(error);
@@ -148,13 +156,30 @@
               name="Login"
               options={{headerShown: false}}>
                 {(props) => <Login {...props}  onPressedButtonValue= {onPressedButtonValue} setOnPressedButtonValue={setOnPressedButtonValue}  
-                setPrenom={setPrenom} setNom={setNom} />}
+                setPrenom={setPrenom} setNom={setNom} setUserData={setUserData}/>}
+            </Stack.Screen>
+            <Stack.Screen
+              name="CodeForLogin"
+              options={{ 
+                title: '',
+                headerStyle: {
+                  backgroundColor: '#66CDAA',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                  fontWeight: 'bold',
+                  fontSize:25
+                },
+                headerBackTitle:' '
+              }} 
+             >
+                {(props) => <CodeForLogin {...props}  userData={userData}/>}
             </Stack.Screen>
             <Stack.Screen 
               name="Information" 
               component={Information}
               options={{ 
-                title: 'Information',
+                title: 'Bon à savoir',
                 headerStyle: {
                   backgroundColor: '#66CDAA',
                 },
@@ -224,7 +249,7 @@
                 <Stack.Screen
                   name="ListNatt"
                   component={ListNatt}
-                  options={{ 
+                  options={({ navigation }) => ({
                     title: 'Mes Natts',
                     headerTitleAlign: 'left',
                     headerStyle: {
@@ -238,7 +263,11 @@
                     headerBackTitle:' ',
                     headerShadowVisible: false,
                     headerRight: ()=>(
-                      <TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={() => {
+                         navigation.navigate('CreationNatt')
+                        }}
+                      >
                         <Image 
                           source={addNatt}  
                           style={styles.icon}
@@ -247,14 +276,14 @@
                       </TouchableOpacity>
                         
                     )
-                  }} 
+                  })}
                 />
 
                 <Stack.Screen
                   name="Invitation"
                   component={Invitation}
                   options={{ 
-                    title: 'Mes demandes à',
+                    title: 'Mes adhésions',
                     headerTitleAlign: 'left',
                     headerStyle: {
                       backgroundColor: '#66CDAA',
@@ -286,8 +315,31 @@
                     headerShadowVisible: false
                   }} 
                 >
-                  {(props) => <Menu {...props}  onPressedButtonValue= {onPressedButtonValue} setIsConnected={setIsConnected} />}
+                  {(props) => <Menu {...props}  onPressedButtonValue= {onPressedButtonValue} />}
                 </Stack.Screen>
+
+                <Stack.Screen
+                  name="CreationNatt"
+                  options={{ 
+                    title: 'Création du Natt',
+                    headerTitleAlign: 'left',
+                    headerStyle: {
+                      backgroundColor: '#66CDAA',
+                    },
+                    headerTintColor: '#fff',
+                    headerTitleStyle: {
+                      fontWeight: 'bold',
+                      fontSize:25
+                    },
+                    headerBackTitle:' ',
+                    headerShadowVisible: false
+                  }} 
+                >
+                  {(props) => <CreationNatt {...props}  />}
+                </Stack.Screen>
+
+
+                
 
             </Stack.Navigator>
 

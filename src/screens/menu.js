@@ -11,6 +11,7 @@ import { AuthContext } from '../components/Context';
 const Menu =  ({ onPressedButtonValue }) => {
     const {signOut} = React.useContext(AuthContext);
 
+    
     return ( 
         <View style={styles.root}>
             <View style={{height:20,padding:5}}>
@@ -64,7 +65,11 @@ const Menu =  ({ onPressedButtonValue }) => {
                                 />
                             </View>
                             <View style={{alignItems:'flex-start', justifyContent:'center', paddingLeft:15, flex:1}}>
-                                <Text style={{color:'#000', fontSize:18}}>Se déconnecter {"\n"} ({onPressedButtonValue}) </Text>
+                                <Text style={{color:'#000', fontSize:18}}>
+                                    Se déconnecter {"\n"} (
+                                        {onPressedButtonValue}
+                                    ) 
+                                </Text>
                             </View>
                         </View>
                     </TouchableOpacity>

@@ -6,22 +6,35 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from './Context';
 
 
-const CustomButtonStepForward = ({ navigation, desabledValue, onPressedButtonValue, setPrenom, setNom }) => {
+const CustomButtonStepForward = ({ navigation, desabledValue, onPressedButtonValue, setPrenom, setNom, setUserData }) => {
     const {signIn} = React.useContext(AuthContext);
+
+    const searchUser = (telephone) => {
+        fetch('http://10.0.2.2:3001/' + telephone)
+        .then((response) => response.json())
+            .then((responseJson) => {
+                if (responseJson.length > 0) {
+                    //console.log(responseJson[0]); 
+                    //signIn(responseJson[0]);
+                    setUserData(responseJson[0]);
+                    navigation.navigate('CodeForLogin'); 
+                }else{
+                    setPrenom('');
+                    setNom('');
+                    navigation.navigate('Inscription'); 
+                } 
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
    
     return (  
         <TouchableOpacity 
             style={styles.container}
             disabled={desabledValue}
-            onPress={() => {
-                if(onPressedButtonValue!='77 743 74 44'){
-                    setPrenom('');
-                    setNom('');
-                    navigation.navigate('Inscription');
-                }else{
-                    signIn(onPressedButtonValue);
-                }
-               
+            onPress={() => { 
+                searchUser(onPressedButtonValue)
             }}
         >
            <Image 
