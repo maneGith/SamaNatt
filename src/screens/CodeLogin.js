@@ -3,7 +3,7 @@ import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image } from 'reac
 import Img from '../../assets/images/backsp.png';
 import ButtonTestValidationCodeSecret from '../components/ButtonTestValidationCodeSecret';
 
-const CodeForLogin =  ({ navigation, userData }) => {
+const CodeLogin =  ({ navigation, userData }) => {
     const [pin1, setPin1] = useState('');
     const [pin2, setPin2] = useState('');
     const [pin3, setPin3] = useState('');
@@ -298,5 +298,5 @@ const styles = StyleSheet.create({
     }
 })
 
-export default CodeForLogin;
+export default CodeLogin;
 

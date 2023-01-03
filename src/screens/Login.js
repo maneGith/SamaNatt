@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
     View ,
     Text,
@@ -6,6 +6,7 @@ import {
     Image,
     useWindowDimensions,
     TouchableOpacity,
+    Keyboard,
     Platform
     } from 'react-native';
 import Logo from '../../assets/images/logo.png'
@@ -32,29 +33,14 @@ const Login =  ({ navigation, onPressedButtonValue, setOnPressedButtonValue, set
                 resizeMode="contain"
             />
             <View>
-                <Text style={{fontSize:30, fontWeight:'bold', fontStyle: 'italic'}}>Samanatt</Text>
+                <Text style={{fontSize:30, fontWeight:'bold'}}>Natt</Text>
             </View>
 
-            <View style={{ alignItems: 'center',paddingTop:10}}>
-                <Text style={{fontSize:22,  color:'#000'}}>Pour commencer, entrez le</Text>
-                <Text style={{fontSize:22,  color:'#000'}}>numéro de votre téléphone mobile</Text>
-            </View>
+           
 
             <View style={styles.containerInputPhoneSection}>
 
-                <View style={styles.flagSection}>
-                    <Image 
-                        source={Flag}  
-                        style={styles.iconFlag}
-                        resizeMode="contain"
-                    />
-                </View>
-
-                <View style={styles.indicatorSection}>
-                    <Text  style={{fontSize:25, color:'#000'}}>
-                        +221
-                    </Text>
-                </View> 
+                
 
                 <View style={styles.phoneSection}>
                     <CustomTextInput 
@@ -62,9 +48,10 @@ const Login =  ({ navigation, onPressedButtonValue, setOnPressedButtonValue, set
                         fontColor={'#000'}
                         value={onPressedButtonValue} 
                         onChangeText={setOnPressedButtonValue}
-                        editable={false}
+                       // editable={false}
+                        
                         showSoftInputOnFocus={false} 
-                        autoFocus 
+                        
                         fontSizeValue={25}
                     />
                 </View>

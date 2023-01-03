@@ -29,7 +29,7 @@ const Menu =  ({ onPressedButtonValue }) => {
                                 />
                             </View>
                             <View style={{alignItems:'flex-start', justifyContent:'center', paddingLeft:15, flex:1}}>
-                                <Text style={{color:'#000', fontSize:18}}>Inviter un ami à rejondre SamaNatt</Text>
+                                <Text style={{color:'#000', fontSize:18}}>Inviter un ami à rejondre GesTontine</Text>
                             </View>
                         </View>
                     </TouchableOpacity>

@@ -54,9 +54,8 @@ const Participation =  ({ navigation, onPressedButtonValue }) => {
                     </TouchableOpacity>
                 </View>
                
-                <View style={{width:'70%',justifyContent:'center', alignItems:'center', paddingTop:20}}>
-                    <Text style={{color:'#fff', fontWeight: 'bold',fontSize:25}}>Samanatt</Text>
-                    <Text style={{color:'#340034', fontSize:20, fontWeight:'400'}}>({onPressedButtonValue})</Text>
+                <View style={{width:'70%',justifyContent:'center', alignItems:'center', paddingTop:20}}> 
+                    <Text style={{color:'#fff', fontSize:22, fontWeight:'bold'}}>({onPressedButtonValue})</Text>
                 </View>
 
                 <View style={{width:'15%',justifyContent:'center', alignItems:'flex-end', paddingRight:15, paddingTop:20}}>
@@ -84,7 +83,7 @@ const Participation =  ({ navigation, onPressedButtonValue }) => {
                                 resizeMode="contain"
                             />
                         </View>
-                        <Text style={{fontSize:20, color:'#5f6368', fontWeight:'bold'}}>Natts</Text>
+                        <Text style={{fontSize:20, color:'#5f6368', fontWeight:'bold', fontStyle:'italic'}}>Tontines</Text>
                     </TouchableOpacity>
                 </View>
                 
@@ -102,364 +101,364 @@ const Participation =  ({ navigation, onPressedButtonValue }) => {
                                 resizeMode="contain"
                             />
                         </View>
-                        <Text style={{fontSize:20, color:'#5f6368', fontWeight:'bold'}}>Adhésions</Text>
+                        <Text style={{fontSize:20, color:'#5f6368', fontWeight:'bold', fontStyle:'italic'}}>Invitations</Text>
                     </TouchableOpacity>
                 </View>
             </View>
        
-            <View style={{height:40,padding:5}}>
-                <Text style={{color:'#340034', fontSize:20, fontWeight:'400'}}>Mes versements</Text>
+            <View style={{height:10}}>
+               
             </View>
             
             <View style={{height:Platform.OS=='ios'?height-250:height-245, backgroundColor:'#fff'}}>
-            <ScrollView>
-            <View style={{backgroundColor:'#fff'}}>
-        
-                <View style={{marginBottom:15}}>
-                    <View style={styles.versementNattSectionMontant}>
+                <ScrollView>
+                    <View style={{backgroundColor:'#fff'}}>
+                
+                        <View style={{marginBottom:15}}>
+                            <View style={styles.versementNattSectionMontant}>
 
-                        <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
-                            <Text 
-                                style={{color:'#000',fontWeight:'bold',fontSize:16}}>10 Jan 2022
-                            </Text>
+                                <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
+                                    <Text 
+                                        style={{color:'#000',fontWeight:'bold',fontSize:16}}>10 Jan 2022
+                                    </Text>
+                                </View>
+
+                                <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
+                                    <Image 
+                                        source={samanatt}  
+                                        style={styles.iconManuel}
+                                        resizeMode="contain"
+                                    />
+                                </View>
+                                <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                        <Text 
+                                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
+                                        </Text>
+                                </View>
+
+                            </View>
+                            <View style={styles.descversementNattSectionMontant}>
+                                <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
+                                    <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Tabaski 2023</Text>
+                                </View>
+
+                                <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                    <Image 
+                                            source={flecheme}  
+                                            style={styles.iconManuel}
+                                            resizeMode="contain"
+                                        />
+                                </View>
+                            </View>
                         </View>
 
-                        <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
-                            <Image 
-                                source={samanatt}  
-                                style={styles.iconManuel}
-                                resizeMode="contain"
-                            />
-                        </View>
-                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
-                                <Text 
-                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
-                                </Text>
+                        <View style={{marginBottom:15}}>
+                            <View style={styles.versementNattSectionMontant}>
+
+                                <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
+                                    <Text 
+                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Jan 2022
+                                    </Text>
+                                </View>
+
+                                <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
+                                    <Image 
+                                        source={samanatt}  
+                                        style={styles.iconManuel}
+                                        resizeMode="contain"
+                                    />
+                                </View>
+                                <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                        <Text 
+                                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>10.000F
+                                        </Text>
+                                </View>
+
+                            </View>
+                            <View style={styles.descversementNattSectionMontant}>
+                                <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
+                                    <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Korité 2023</Text>
+                                </View>
+
+                                <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                    <Image 
+                                            source={flecheyou}  
+                                            style={styles.iconManuel}
+                                            resizeMode="contain"
+                                        />
+                                </View>
+                            </View>
                         </View>
 
+                        <View style={{marginBottom:15}}>
+                            <View style={styles.versementNattSectionMontant}>
+
+                                <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
+                                    <Text 
+                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Fèv 2022
+                                    </Text>
+                                </View>
+
+                                <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
+                                    <Image 
+                                        source={om}  
+                                        style={styles.iconManuel}
+                                        resizeMode="contain"
+                                    />
+                                </View>
+                                <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                        <Text 
+                                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>10.000F
+                                        </Text>
+                                </View>
+
+                            </View>
+                            <View style={styles.descversementNattSectionMontant}>
+                                <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
+                                    <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Korité 2023</Text>
+                                </View>
+
+                                <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                    <Image 
+                                            source={flecheyou}  
+                                            style={styles.iconManuel}
+                                            resizeMode="contain"
+                                        />
+                                </View>
+                            </View>
+                        </View>
+
+                        <View style={{marginBottom:15}}>
+                            <View style={styles.versementNattSectionMontant}>
+
+                                <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
+                                    <Text 
+                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Fèv 2022
+                                    </Text>
+                                </View>
+
+                                <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
+                                    <Image 
+                                        source={wave}  
+                                        style={styles.iconManuel}
+                                        resizeMode="contain"
+                                    />
+                                </View>
+                                <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                        <Text 
+                                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
+                                        </Text>
+                                </View>
+
+                            </View>
+                            <View style={styles.descversementNattSectionMontant}>
+                                <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
+                                    <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Tabaski 2023</Text>
+                                </View>
+
+                                <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                    <Image 
+                                            source={flecheme}  
+                                            style={styles.iconManuel}
+                                            resizeMode="contain"
+                                        />
+                                </View>
+                            </View>
+                        </View>
+
+                        <View style={{marginBottom:15}}>
+                            <View style={styles.versementNattSectionMontant}>
+
+                                <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
+                                    <Text 
+                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Mars 2022
+                                    </Text>
+                                </View>
+
+                                <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
+                                    <Image 
+                                        source={wave}  
+                                        style={styles.iconManuel}
+                                        resizeMode="contain"
+                                    />
+                                </View>
+                                <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                        <Text 
+                                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
+                                        </Text>
+                                </View>
+
+                            </View>
+                            <View style={styles.descversementNattSectionMontant}>
+                                <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
+                                    <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Tabaski 2023</Text>
+                                </View>
+
+                                <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                    <Image 
+                                            source={flecheme}  
+                                            style={styles.iconManuel}
+                                            resizeMode="contain"
+                                        />
+                                </View>
+                            </View>
+                        </View>
+
+                        <View style={{marginBottom:15}}>
+                            <View style={styles.versementNattSectionMontant}>
+
+                                <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
+                                    <Text 
+                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Mars 2022
+                                    </Text>
+                                </View>
+
+                                <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
+                                    <Image 
+                                        source={wave}  
+                                        style={styles.iconManuel}
+                                        resizeMode="contain"
+                                    />
+                                </View>
+                                <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                        <Text 
+                                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
+                                        </Text>
+                                </View>
+
+                            </View>
+                            <View style={styles.descversementNattSectionMontant}>
+                                <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
+                                    <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Tabaski 2023</Text>
+                                </View>
+
+                                <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                    <Image 
+                                            source={flecheme}  
+                                            style={styles.iconManuel}
+                                            resizeMode="contain"
+                                        />
+                                </View>
+                            </View>
+                        </View>
+                        <View style={{marginBottom:15}}>
+                            <View style={styles.versementNattSectionMontant}>
+
+                                <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
+                                    <Text 
+                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Mars 2022
+                                    </Text>
+                                </View>
+
+                                <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
+                                    <Image 
+                                        source={wave}  
+                                        style={styles.iconManuel}
+                                        resizeMode="contain"
+                                    />
+                                </View>
+                                <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                        <Text 
+                                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
+                                        </Text>
+                                </View>
+
+                            </View>
+                            <View style={styles.descversementNattSectionMontant}>
+                                <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
+                                    <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Tabaski 2023</Text>
+                                </View>
+
+                                <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                    <Image 
+                                            source={flecheme}  
+                                            style={styles.iconManuel}
+                                            resizeMode="contain"
+                                        />
+                                </View>
+                            </View>
+                        </View>
+                        <View style={{marginBottom:15}}>
+                            <View style={styles.versementNattSectionMontant}>
+
+                                <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
+                                    <Text 
+                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Mars 2022
+                                    </Text>
+                                </View>
+
+                                <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
+                                    <Image 
+                                        source={wave}  
+                                        style={styles.iconManuel}
+                                        resizeMode="contain"
+                                    />
+                                </View>
+                                <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                        <Text 
+                                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
+                                        </Text>
+                                </View>
+
+                            </View>
+                            <View style={styles.descversementNattSectionMontant}>
+                                <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
+                                    <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Tabaski 2023</Text>
+                                </View>
+
+                                <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                    <Image 
+                                            source={flecheme}  
+                                            style={styles.iconManuel}
+                                            resizeMode="contain"
+                                        />
+                                </View>
+                            </View>
+                        </View>
+                        <View style={{marginBottom:15}}>
+                            <View style={styles.versementNattSectionMontant}>
+
+                                <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
+                                    <Text 
+                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Mars 2022
+                                    </Text>
+                                </View>
+
+                                <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
+                                    <Image 
+                                        source={wave}  
+                                        style={styles.iconManuel}
+                                        resizeMode="contain"
+                                    />
+                                </View>
+                                <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                        <Text 
+                                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
+                                        </Text>
+                                </View>
+
+                            </View>
+                            <View style={styles.descversementNattSectionMontant}>
+                                <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
+                                    <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Scolarite 2023</Text>
+                                </View>
+
+                                <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
+                                    <Image 
+                                            source={flecheme}  
+                                            style={styles.iconManuel}
+                                            resizeMode="contain"
+                                        />
+                                </View>
+                            </View>
+                        </View>
+
+                    
                     </View>
-                    <View style={styles.descversementNattSectionMontant}>
-                        <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
-                            <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Tabaski 2023</Text>
-                        </View>
 
-                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
-                            <Image 
-                                    source={flecheme}  
-                                    style={styles.iconManuel}
-                                    resizeMode="contain"
-                                />
-                        </View>
-                    </View>
-                </View>
-
-                <View style={{marginBottom:15}}>
-                    <View style={styles.versementNattSectionMontant}>
-
-                        <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
-                            <Text 
-                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Jan 2022
-                            </Text>
-                        </View>
-
-                        <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
-                            <Image 
-                                source={samanatt}  
-                                style={styles.iconManuel}
-                                resizeMode="contain"
-                            />
-                        </View>
-                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
-                                <Text 
-                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>10.000F
-                                </Text>
-                        </View>
-
-                    </View>
-                    <View style={styles.descversementNattSectionMontant}>
-                        <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
-                            <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Korité 2023</Text>
-                        </View>
-
-                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
-                            <Image 
-                                    source={flecheyou}  
-                                    style={styles.iconManuel}
-                                    resizeMode="contain"
-                                />
-                        </View>
-                    </View>
-                </View>
-
-                <View style={{marginBottom:15}}>
-                    <View style={styles.versementNattSectionMontant}>
-
-                        <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
-                            <Text 
-                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Fèv 2022
-                            </Text>
-                        </View>
-
-                        <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
-                            <Image 
-                                source={om}  
-                                style={styles.iconManuel}
-                                resizeMode="contain"
-                            />
-                        </View>
-                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
-                                <Text 
-                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>10.000F
-                                </Text>
-                        </View>
-
-                    </View>
-                    <View style={styles.descversementNattSectionMontant}>
-                        <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
-                            <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Korité 2023</Text>
-                        </View>
-
-                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
-                            <Image 
-                                    source={flecheyou}  
-                                    style={styles.iconManuel}
-                                    resizeMode="contain"
-                                />
-                        </View>
-                    </View>
-                </View>
-
-                <View style={{marginBottom:15}}>
-                    <View style={styles.versementNattSectionMontant}>
-
-                        <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
-                            <Text 
-                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Fèv 2022
-                            </Text>
-                        </View>
-
-                        <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
-                            <Image 
-                                source={wave}  
-                                style={styles.iconManuel}
-                                resizeMode="contain"
-                            />
-                        </View>
-                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
-                                <Text 
-                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
-                                </Text>
-                        </View>
-
-                    </View>
-                    <View style={styles.descversementNattSectionMontant}>
-                        <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
-                            <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Tabaski 2023</Text>
-                        </View>
-
-                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
-                            <Image 
-                                    source={flecheme}  
-                                    style={styles.iconManuel}
-                                    resizeMode="contain"
-                                />
-                        </View>
-                    </View>
-                </View>
-
-                <View style={{marginBottom:15}}>
-                    <View style={styles.versementNattSectionMontant}>
-
-                        <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
-                            <Text 
-                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Mars 2022
-                            </Text>
-                        </View>
-
-                        <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
-                            <Image 
-                                source={wave}  
-                                style={styles.iconManuel}
-                                resizeMode="contain"
-                            />
-                        </View>
-                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
-                                <Text 
-                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
-                                </Text>
-                        </View>
-
-                    </View>
-                    <View style={styles.descversementNattSectionMontant}>
-                        <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
-                            <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Tabaski 2023</Text>
-                        </View>
-
-                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
-                            <Image 
-                                    source={flecheme}  
-                                    style={styles.iconManuel}
-                                    resizeMode="contain"
-                                />
-                        </View>
-                    </View>
-                </View>
-
-                <View style={{marginBottom:15}}>
-                    <View style={styles.versementNattSectionMontant}>
-
-                        <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
-                            <Text 
-                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Mars 2022
-                            </Text>
-                        </View>
-
-                        <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
-                            <Image 
-                                source={wave}  
-                                style={styles.iconManuel}
-                                resizeMode="contain"
-                            />
-                        </View>
-                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
-                                <Text 
-                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
-                                </Text>
-                        </View>
-
-                    </View>
-                    <View style={styles.descversementNattSectionMontant}>
-                        <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
-                            <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Tabaski 2023</Text>
-                        </View>
-
-                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
-                            <Image 
-                                    source={flecheme}  
-                                    style={styles.iconManuel}
-                                    resizeMode="contain"
-                                />
-                        </View>
-                    </View>
-                </View>
-                <View style={{marginBottom:15}}>
-                    <View style={styles.versementNattSectionMontant}>
-
-                        <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
-                            <Text 
-                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Mars 2022
-                            </Text>
-                        </View>
-
-                        <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
-                            <Image 
-                                source={wave}  
-                                style={styles.iconManuel}
-                                resizeMode="contain"
-                            />
-                        </View>
-                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
-                                <Text 
-                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
-                                </Text>
-                        </View>
-
-                    </View>
-                    <View style={styles.descversementNattSectionMontant}>
-                        <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
-                            <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Tabaski 2023</Text>
-                        </View>
-
-                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
-                            <Image 
-                                    source={flecheme}  
-                                    style={styles.iconManuel}
-                                    resizeMode="contain"
-                                />
-                        </View>
-                    </View>
-                </View>
-                <View style={{marginBottom:15}}>
-                    <View style={styles.versementNattSectionMontant}>
-
-                        <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
-                            <Text 
-                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Mars 2022
-                            </Text>
-                        </View>
-
-                        <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
-                            <Image 
-                                source={wave}  
-                                style={styles.iconManuel}
-                                resizeMode="contain"
-                            />
-                        </View>
-                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
-                                <Text 
-                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
-                                </Text>
-                        </View>
-
-                    </View>
-                    <View style={styles.descversementNattSectionMontant}>
-                        <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
-                            <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Tabaski 2023</Text>
-                        </View>
-
-                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
-                            <Image 
-                                    source={flecheme}  
-                                    style={styles.iconManuel}
-                                    resizeMode="contain"
-                                />
-                        </View>
-                    </View>
-                </View>
-                <View style={{marginBottom:15}}>
-                    <View style={styles.versementNattSectionMontant}>
-
-                        <View style={{width:'30%', alignItems:'flex-start', justifyContent:'center'}}>
-                            <Text 
-                                style={{color:'#000', fontWeight:'bold',fontSize:16}}>10 Mars 2022
-                            </Text>
-                        </View>
-
-                        <View style={{width:'20%', alignItems:'center', justifyContent:'center'}}>
-                            <Image 
-                                source={wave}  
-                                style={styles.iconManuel}
-                                resizeMode="contain"
-                            />
-                        </View>
-                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
-                                <Text 
-                                        style={{color:'#000', fontWeight:'bold',fontSize:16}}>20.000F
-                                </Text>
-                        </View>
-
-                    </View>
-                    <View style={styles.descversementNattSectionMontant}>
-                        <View style={{width:'50%', alignItems:'flex-start', justifyContent:'center'}}>
-                            <Text style={{color:'#5f6368', fontSize:16, fontWeight:'400'}}>Sunu Natt Scolarite 2023</Text>
-                        </View>
-
-                        <View style={{width:'50%', alignItems:'flex-end', justifyContent:'center', paddingRight:10}}>
-                            <Image 
-                                    source={flecheme}  
-                                    style={styles.iconManuel}
-                                    resizeMode="contain"
-                                />
-                        </View>
-                    </View>
-                </View>
-
-              
+                
+                </ScrollView>
             </View>
-
-          
-        </ScrollView>
-        </View>
        
         </SafeAreaView>
      );

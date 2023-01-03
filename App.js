@@ -20,19 +20,25 @@
  import Information from './src/screens/Information';
 
 
- import Participation from './src/screens/Participation';
- import ListNatt from './src/screens/ListNatt';
- import Invitation from './src/screens/Invitation';
+import Home from './src/screens/Home';
+import Tontine from './src/screens/Tontine';
+import CreateTontine from './src/screens/CreateTontine';
+import SearchTontine from './src/screens/SearchTontine';
+import SearchAmi from './src/screens/SearchAmi';
+
+
+ import Amitie from './src/screens/Amitie';
  import Menu from './src/screens/Menu';
  import Inscription from './src/screens/Inscription';
  import CodeSecret from './src/screens/CodeSecret';
- import CodeForLogin from './src/screens/CodeForLogin';
- import CreationNatt from './src/screens/CreationNatt';
+ import CodeLogin from './src/screens/CodeLogin';
+ 
+
 
  import { NavigationContainer } from '@react-navigation/native';
  import { createNativeStackNavigator } from '@react-navigation/native-stack';
  import { AuthContext } from './src/components/Context';
- import addNatt from './assets/images/icone-new.png'
+ 
  
  const Stack = createNativeStackNavigator();
 
@@ -46,6 +52,12 @@
   const [onPressedButtonValue, setOnPressedButtonValue] = useState('');
   const [prenom, setPrenom] = useState('');
   const [nom, setNom] = useState('');
+  const [tontine, setTontine] = useState([]);
+  const [ami, setAmi] = useState([]);
+  const [input, setInput] = useState([]);
+
+  
+
   //const [isLoading, setIsLoading] = React.useState(false);
  //const [userToken, setUserToken] = React.useState(null);
  const initialLoginState = {
@@ -60,6 +72,7 @@
       case 'RESTORE_TOKEN':
         return {
           ...prevState,
+          userData: action.id,
           userToken: action.token,
           isLoading: false,
         };
@@ -91,6 +104,8 @@
           userToken =   'dummy-auth-token';
           const jsonValue = JSON.stringify(userData);
 
+         
+
           await AsyncStorage.setItem('userToken', userToken);
           await AsyncStorage.setItem('userData', jsonValue);
         } catch (error) {
@@ -102,7 +117,11 @@
       try {
         await AsyncStorage.removeItem('userToken');
         await AsyncStorage.removeItem('userData');
+
         setOnPressedButtonValue('');
+        setTontine([]);
+        setInput([]);
+
       } catch (error) {
         console.log(error);
       }
@@ -129,7 +148,7 @@
       } catch (error) {
         console.log(error);
       }
-      dispatch({ type: 'RESTORE_TOKEN', token: userToken });
+      dispatch({ type: 'RESTORE_TOKEN', id: userData, token: userToken });
     }, 1000);
   }, []);
 
@@ -159,7 +178,7 @@
                 setPrenom={setPrenom} setNom={setNom} setUserData={setUserData}/>}
             </Stack.Screen>
             <Stack.Screen
-              name="CodeForLogin"
+              name="CodeLogin"
               options={{ 
                 title: '',
                 headerStyle: {
@@ -173,7 +192,7 @@
                 headerBackTitle:' '
               }} 
              >
-                {(props) => <CodeForLogin {...props}  userData={userData}/>}
+                {(props) => <CodeLogin {...props}  userData={userData}/>}
             </Stack.Screen>
             <Stack.Screen 
               name="Information" 
@@ -234,74 +253,69 @@
             
             ):(
             <Stack.Navigator
-            initialRouteName='Participation'
+            initialRouteName='Home'
             >
 
                 <Stack.Screen
-                  name="Participation"
+                  name="Home"
                   options={{ 
                   headerShown:false
                   }} >
-                        {(props) => <Participation {...props}  onPressedButtonValue= {onPressedButtonValue} />}
+                        {(props) => <Home {...props}  onPressedButtonValue= {onPressedButtonValue}  userData={userData} input={input}/>}
                 </Stack.Screen>
 
 
                 <Stack.Screen
-                  name="ListNatt"
-                  component={ListNatt}
-                  options={({ navigation }) => ({
-                    title: 'Mes Natts',
-                    headerTitleAlign: 'left',
-                    headerStyle: {
-                      backgroundColor: '#66CDAA',
-                    },
-                    headerTintColor: '#fff',
-                    headerTitleStyle: {
-                      fontWeight: 'bold',
-                      fontSize:25
-                    },
-                    headerBackTitle:' ',
-                    headerShadowVisible: false,
-                    headerRight: ()=>(
-                      <TouchableOpacity
-                        onPress={() => {
-                         navigation.navigate('CreationNatt')
-                        }}
-                      >
-                        <Image 
-                          source={addNatt}  
-                          style={styles.icon}
-                          resizeMode="contain"
-                        />
-                      </TouchableOpacity>
-                        
-                    )
-                  })}
-                />
+                  name="Tontine"
+                  options={{ 
+                    headerShown:false
+                }}
+                >
+                  {(props) => <Tontine {...props}    tontine={tontine}   userData={userData} input={input} />}
+                </Stack.Screen>
 
                 <Stack.Screen
-                  name="Invitation"
-                  component={Invitation}
+                  name="CreateTontine"
                   options={{ 
-                    title: 'Mes adhésions',
-                    headerTitleAlign: 'left',
-                    headerStyle: {
-                      backgroundColor: '#66CDAA',
-                    },
-                    headerTintColor: '#fff',
-                    headerTitleStyle: {
-                      fontWeight: 'bold',
-                      fontSize:25
-                    },
-                    headerBackTitle:' ',
-                    headerShadowVisible: false
+                    headerShown:false
+                    }}
+                >
+                  {(props) => <CreateTontine {...props}  userData={userData}  tontine={tontine} input={input} />}
+                </Stack.Screen>
+
+                <Stack.Screen
+                  name="SearchTontine"
+                  options={{ 
+                    headerShown:false
+                }}
+                >
+                  {(props) => <SearchTontine {...props}   />}
+                </Stack.Screen>
+
+                <Stack.Screen
+                  name="Amitie"
+                  options={{ 
+                    headerShown:false
+                    
                   }} 
-                />
+                >
+                  {(props) => <Amitie {...props}    ami={ami}   userData={userData} input={input} />}
+                </Stack.Screen>
+
+                <Stack.Screen
+                  name="SearchAmi"
+                  options={{ 
+                    headerShown:false
+                }}
+                >
+                  {(props) => <SearchAmi {...props}   />}
+                </Stack.Screen>
+
 
                 <Stack.Screen
                   name="Menu"
                   options={{ 
-                    title: 'Menu',
+                    title: 'Paramètres',
                     headerTitleAlign: 'left',
                     headerStyle: {
                       backgroundColor: '#66CDAA',
@@ -317,28 +331,6 @@
                 >
                   {(props) => <Menu {...props}  onPressedButtonValue= {onPressedButtonValue} />}
                 </Stack.Screen>
-
-                <Stack.Screen
-                  name="CreationNatt"
-                  options={{ 
-                    title: 'Création du Natt',
-                    headerTitleAlign: 'left',
-                    headerStyle: {
-                      backgroundColor: '#66CDAA',
-                    },
-                    headerTintColor: '#fff',
-                    headerTitleStyle: {
-                      fontWeight: 'bold',
-                      fontSize:25
-                    },
-                    headerBackTitle:' ',
-                    headerShadowVisible: false
-                  }} 
-                >
-                  {(props) => <CreationNatt {...props}  />}
-                </Stack.Screen>
-
-
                 
 
             </Stack.Navigator>

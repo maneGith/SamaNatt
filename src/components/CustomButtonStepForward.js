@@ -17,7 +17,7 @@ const CustomButtonStepForward = ({ navigation, desabledValue, onPressedButtonVal
                     //console.log(responseJson[0]); 
                     //signIn(responseJson[0]);
                     setUserData(responseJson[0]);
-                    navigation.navigate('CodeForLogin'); 
+                    navigation.navigate('CodeLogin'); 
                 }else{
                     setPrenom('');
                     setNom('');
